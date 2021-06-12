@@ -2,7 +2,8 @@
   "name": "static",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "jest --coverage",
@@ -11,7 +12,8 @@
     "check-format": "npm run prettier -- --list-different",
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx .",
     "validate": "npm-run-all --parallel check-format lint",
-    "husky-install": "husky install"
+    "husky-install": "husky install",
+    "start": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +28,13 @@
     "husky": "^6.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "cloudinary": "^1.25.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "uuidv4": "^6.2.8"
   }
 }
