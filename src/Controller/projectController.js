@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { v4 as uuidv4 } from "uuid";
 import cloudinary from "../utils/cloudinary.js";
+import mysql from "mysql2"
 
 const parseJsonFile = () => {
   const dbFiles = readFileSync("./src/db/db.json", "utf8");
@@ -15,12 +16,29 @@ const overRideJson = () => {
 
 export const updatedTable = parseJsonFile();
 
+const connection = mysql.createConnection({
+  host :"localhost",
+  user     : 'root',
+  // eslint-disable-next-line no-undef
+  password : process.env.SQLPASSWORD,
+  database : 'projet_portfolio'
+});
+ 
+connection.connect((err)=> {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+      }
+      console.log('connected as id ' + connection.threadId);
+}
+);
+ 
 export const getPortfolios = (req, res) => {
-  try {
-    res.send(updatedTable);
-  } catch (err) {
-    console.log(err);
-  }
+    connection.query("SELECT * FROM projet", (error, result) =>{
+        if(error) throw error;
+        console.log(result)
+        res.send(result);
+    })
 };
 
 export const postProject = async (
@@ -67,3 +85,5 @@ export const deleteProject = ({ project }, res) => {
   overRideJson();
   res.send(parseJsonFile());
 };
+
+// connection.end();
