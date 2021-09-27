@@ -1,5 +1,5 @@
 const paths = {
-  portfoliosBaseURI: "/api/portfolios",
+  portfoliosBaseURI: "/api/portfolio",
 };
 
 export default paths;

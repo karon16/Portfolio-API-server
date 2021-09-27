@@ -1,22 +1,17 @@
 import express from "express";
+import { projectController } from "../Controller/projectController.js";
 import {
-  getPortfolios,
-  postProject,
-  getProject,
-  modifyProject,
-  deleteProject,
-} from "../Controller/projectController.js";
-import {
+  findByName,
   checkProject,
   validateBody,
 } from "../middleware/portfoliosMiddleware.js";
 
 const router = express.Router();
 
-router.get("/", getPortfolios);
-router.post(`/project`, validateBody, postProject);
-router.get(`/project/:id`, checkProject, getProject);
-router.put(`/project/:id`, validateBody, checkProject, modifyProject);
-router.delete(`/project/:id`, checkProject, deleteProject);
+router.get("/projects", projectController.get);
+router.post(`/project`, validateBody, findByName, projectController.post);
+router.get(`/project/:id`, checkProject, projectController.getProject);
+router.put(`/project/:id`, checkProject, projectController.update);
+router.delete(`/project/:id`, checkProject, projectController.deleteProject);
 
 export default router;
