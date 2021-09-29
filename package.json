@@ -13,7 +13,8 @@
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx .",
     "validate": "npm-run-all --parallel check-format lint",
     "husky-install": "husky install",
-    "start": "nodemon"
+    "start": "node server.js",
+    "dev": "nodemon"
   },
   "keywords": [],
   "author": "",
