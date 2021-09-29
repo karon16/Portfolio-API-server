@@ -1,8 +1,8 @@
--- DROP DATABASE IF EXISTS projet_portfolio;
+DROP DATABASE IF EXISTS projet_portfolio;
 CREATE DATABASE IF NOT EXISTS projet_portfolio;
 USE projet_portfolio;
 
--- DROP TABLE IF EXISTS categorie;
+DROP TABLE IF EXISTS categorie;
 CREATE TABLE IF NOT EXISTS categorie (
     id_categorie INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nom_categorie VARCHAR(50) NOT NULL UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS categorie (
 INSERT INTO categorie (nom_categorie) VALUES ("Graphisme");
 INSERT INTO categorie (nom_categorie) VALUES ("Web Design");
 
--- DROP TABLE IF EXISTS projet;
+DROP TABLE IF EXISTS projet;
 CREATE TABLE IF NOT EXISTS projet (
     id_projet INT UNSIGNED NOT NULL AUTO_INCREMENT,
     id_categorie INT UNSIGNED NOT NULL,
@@ -28,14 +28,14 @@ CREATE TABLE IF NOT EXISTS projet (
         ON UPDATE CASCADE
 );
 
--- DROP TABLE IF EXISTS techno;
+DROP TABLE IF EXISTS techno;
 CREATE TABLE IF NOT EXISTS techno (
     id_techno INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nom_techno VARCHAR(50) NOT NULL UNIQUE,
     PRIMARY KEY (id_techno)
 );
 
--- DROP TABLE IF EXISTS techno_projet;
+DROP TABLE IF EXISTS techno_projet;
 CREATE TABLE IF NOT EXISTS techno_projet (
     id_techno INT UNSIGNED NOT NULL,
     id_projet INT UNSIGNED NOT NULL,
