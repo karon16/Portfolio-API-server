@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
-import mysql from "mysql2";
-import dotenv from "dotenv";
+import mysql from 'mysql2';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -12,6 +12,7 @@ export const connection = mysql.createConnection({
 });
 
 connection.connect((err) => {
+  console.log('connected');
   if (err) {
     console.log(err);
     console.error(`error connecting on ${process.env.MYSQL_ADDON_HOST}`);
